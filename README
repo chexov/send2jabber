@@ -1,21 +1,20 @@
-# #
+##
 # BUILD
-# #
+##
 sh ./build.sh
-export PYTHONPATH=$PWD/send2jabber.zip:$PYTHONPATH
-python -m send2jabber your@jid "message"
 
-# #
+
+##
 # INSTALL
-# #
-send2jabber.zip was created for easy discributing into the cloud of you
-machines. To install just copy it to your home
+##
+send2jabber.zip file was created for easy discributing into the cloud of your
+machines. To install just copy it to your home folder.
 
  scp send2jabber.zip myhost:
 
 Add this into .profile to be neat:
- export PYTHONPATH=$HOME/send2jabber.zip:$PYTHONPATH
- alias s2j="python -m send2jabber.send2jabber anton@linevich.com '$*'"
+ export PYTHONPATH=$HOME/send2jabber.zip:${PYTHONPATH:-}
+ alias s2j="python -m send2jabber.send2jabber myjid@jabber.org '`hostname`: $*'"
 
 To avoid asking for password create ~/.xsend config file with your credentials:
 cat > ~/.xsend
@@ -23,9 +22,9 @@ cat > ~/.xsend
  PASSWORD=send2jabberpass
 
 
-# #
+##
 # USAGE
-# #
+##
 Basically here it is:
-/usr/local/bin/some-long-command; python -m send2jabber my@myhost.com "`hostname` longcommand is finished: e $?"
+/usr/local/bin/some-long-command; "longcommand is finished: e $?"
 
